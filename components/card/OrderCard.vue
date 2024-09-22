@@ -35,6 +35,10 @@ const props = defineProps<{
   width: 100%;
   padding: 29px 24px;
   border-radius: 10px;
+
+  @include bp($point_2) {
+    padding: 15px 10px;
+  }
   &.active {
     box-shadow: 0px 2px 15.4px 0px rgba(0, 0, 0, 0.09);
     background: $white;
@@ -71,8 +75,14 @@ const props = defineProps<{
 .order_card__head {
   @include flex-space;
   margin-bottom: 20px;
+  @include bp($point_2) {
+    margin-bottom: 10px;
+  }
   h3 {
     font-size: 28px;
+    @include bp($point_2) {
+      font-size: 20px;
+    }
   }
 }
 

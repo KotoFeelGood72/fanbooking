@@ -6,7 +6,12 @@
           <h2>{{ title }}</h2>
           <p>{{ text }}</p>
           <div class="blockImg__btn">
-            <Buttons :name="button" icon="air" size="medium" @click="pushAir()" />
+            <Buttons
+              :name="button"
+              icon="air"
+              size="medium"
+              @click="pushAir()"
+            />
           </div>
         </div>
         <div class="blockImg__img">
@@ -38,20 +43,38 @@ function pushAir() {
 
 <style scoped lang="scss">
 .block_img {
+  &:deep(.container) {
+    padding: 0px;
+  }
+}
+.block_img {
   position: relative;
   background-color: $light;
+  z-index: 0;
+  @include bp($point_2) {
+    background-color: $white;
+  }
 
   &.revert {
+    @include bp($point_2) {
+      margin-bottom: 22px;
+    }
     .blockImg__main {
-      justify-content: flex-end;
+      @include bp($point_2, $direction: min) {
+        justify-content: flex-end;
+      }
     }
     .blockImg__content {
-      order: 2;
+      @include bp($point_2, $direction: min) {
+        order: 2;
+      }
     }
     .blockImg__img {
-      order: 1;
-      right: auto;
-      left: 0;
+      @include bp($point_2, $direction: min) {
+        order: 1;
+        right: auto;
+        left: 0;
+      }
     }
   }
 }
@@ -60,10 +83,21 @@ function pushAir() {
   gap: 29px;
 
   height: 670px;
+
+  @include bp($point_2) {
+    margin-bottom: 50px;
+    flex-direction: column;
+    height: auto;
+    gap: 50px;
+  }
 }
 
 .blockImg__content {
   max-width: 541px;
+
+  @include bp($point_2) {
+    padding: 0 9px 0 9px;
+  }
 
   h2 {
     text-transform: uppercase;
@@ -71,11 +105,19 @@ function pushAir() {
     font-weight: 400;
     font-family: $font_1;
     line-height: 130%;
+
+    @include bp($point_2) {
+      font-size: 28px;
+    }
   }
   p {
     font-size: 20px;
     color: $gray;
     margin: 20px 0;
+    @include bp($point_2) {
+      font-size: 16px;
+      margin: 15px 0 30px 0;
+    }
   }
 }
 .blockImg__img {
@@ -84,6 +126,12 @@ function pushAir() {
   right: 0;
   max-width: 50%;
   @include flex-center;
+  @include bp($point_2) {
+    position: relative;
+    max-width: 100%;
+    height: 251px;
+    width: 100%;
+  }
   img {
     width: 100%;
     height: 100%;

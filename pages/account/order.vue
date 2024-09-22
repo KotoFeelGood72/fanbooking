@@ -23,15 +23,27 @@ import OrderCard from "~/components/card/OrderCard.vue";
 .profile {
   padding: 40px 0 80px 0;
   background-color: $light;
+  @include bp($point_2) {
+    padding: 40px 0 60px 0;
+  }
   h1 {
     font-size: 32px;
     margin-bottom: 27px;
+
+    @include bp($point_2) {
+      font-size: 20px;
+      margin-bottom: 25px;
+    }
   }
 }
 .profile_main {
   @include flex-start;
   align-items: flex-start;
   gap: 37px;
+
+  @include bp($point_2) {
+    flex-direction: column;
+  }
 }
 
 .profile_content {

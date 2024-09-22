@@ -9,10 +9,10 @@
           :arrow="true"
         />
       </div>
-      <div class="filter_input">
+      <div class="filter_input small-col">
         <InputSoloDate v-model="filterData.date" mode="заезд" />
       </div>
-      <div class="filter_input">
+      <div class="filter_input small-col">
         <InputSoloDate v-model="filterData.date" mode="выезд" />
       </div>
       <div class="filter_input">
@@ -70,14 +70,25 @@ function nextAirBooking() {
   gap: 10px 6px;
   max-width: 774px;
   margin: 0 auto;
+  @include bp($point_2) {
+    gap: 10px;
+  }
 }
 
 .filter_input {
   flex-grow: 1;
   width: 24%;
+  &:not(.small-col) {
+    @include bp($point_2) {
+      width: 100%;
+    }
+  }
 }
 
 .filter_btn {
   display: inline-flex;
+  @include bp($point_2) {
+    width: 100%;
+  }
 }
 </style>

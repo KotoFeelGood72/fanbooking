@@ -61,9 +61,13 @@ function handleChange(event: Event) {
     gap: 8px;
     cursor: pointer;
     user-select: none;
+    @include bp($point_2) {
+      align-items: flex-start;
+    }
 
     .checkbox-indicator {
       width: 20px;
+      min-width: 20px;
       height: 20px;
       border: 1px solid $gray;
       display: flex;

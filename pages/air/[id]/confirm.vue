@@ -45,8 +45,8 @@
               </ul>
             </div>
             <div class="confirm_note">
-              При нахождении опечатки в данных вернитесь на предыдущую страницу для
-              исправления
+              При нахождении опечатки в данных вернитесь на предыдущую страницу
+              для исправления
             </div>
             <div class="confirm_total">
               <div class="confirm_total__price">
@@ -119,10 +119,18 @@ import Buttons from "~/components/ui/Buttons.vue";
   background-color: $light;
   padding-bottom: 269px;
   padding-top: 20px;
+
+  @include bp($point_2) {
+    padding-bottom: 60px;
+    padding-top: 0;
+  }
 }
 
 .confirm_main {
   width: 100%;
+  @include bp($point_2) {
+    order: 1;
+  }
 }
 .confirm_list {
   display: flex;
@@ -135,6 +143,10 @@ import Buttons from "~/components/ui/Buttons.vue";
   @include flex-space;
   align-items: flex-start;
   gap: 20px;
+
+  @include bp($point_2) {
+    flex-direction: column;
+  }
 }
 
 .confirm__sidebar {
@@ -147,6 +159,12 @@ import Buttons from "~/components/ui/Buttons.vue";
   position: sticky;
   top: 20px;
   right: 0;
+
+  @include bp($point_2) {
+    position: static;
+    order: 0;
+    padding: 20px 10px;
+  }
 
   h4 {
     margin-bottom: 14px;
@@ -192,11 +210,20 @@ import Buttons from "~/components/ui/Buttons.vue";
   flex-direction: column;
   gap: 15px;
   margin-bottom: 27px;
+  @include bp($point_2) {
+    gap: 10px;
+  }
   h1 {
     font-size: 32px;
+    @include bp($point_2) {
+      font-size: 20px;
+    }
   }
   p {
     font-size: 24px;
+    @include bp($point_2) {
+      font-size: 16px;
+    }
   }
 }
 
@@ -204,6 +231,9 @@ import Buttons from "~/components/ui/Buttons.vue";
   h3 {
     font-size: 32px;
     margin-bottom: 12px;
+    @include bp($point_2) {
+      font-size: 20px;
+    }
   }
   ul {
     li {
@@ -235,12 +265,23 @@ import Buttons from "~/components/ui/Buttons.vue";
   @include flex-space;
   gap: 20px;
   margin-bottom: 10px;
+  @include bp($point_2) {
+    align-items: flex-start;
+    margin-bottom: 23px;
+  }
   h3 {
     font-size: 32px;
     margin-bottom: 7px;
+    @include bp($point_2) {
+      font-size: 20px;
+    }
   }
   p {
     color: $gray;
+    @include bp($point_2) {
+      max-width: 100%;
+      opacity: 0.7;
+    }
   }
 }
 
@@ -258,6 +299,9 @@ import Buttons from "~/components/ui/Buttons.vue";
     color: $blue;
     font-weight: 600;
     margin-bottom: 8px;
+    @include bp($point_2) {
+      display: none;
+    }
   }
 
   ul {
@@ -267,6 +311,17 @@ import Buttons from "~/components/ui/Buttons.vue";
     max-width: 429px;
     color: $gray;
     font-size: 14px;
+    @include bp($point_2) {
+      max-width: 100%;
+      opacity: 0.7;
+    }
+    li {
+      &:nth-child(4) {
+        @include bp($point_2) {
+          margin-bottom: 23px;
+        }
+      }
+    }
   }
 }
 
@@ -279,12 +334,21 @@ import Buttons from "~/components/ui/Buttons.vue";
   font-weight: 700;
   gap: 20px;
   margin-bottom: 15px;
+  @include bp($point_2) {
+    gap: 10px;
+  }
   p {
     font-size: 24px;
+    @include bp($point_2) {
+      font-size: 16px;
+    }
   }
   span {
     font-family: "Open-Sans", sans-serif;
     font-size: 40px;
+    @include bp($point_2) {
+      font-size: 24px;
+    }
   }
 }
 
@@ -300,9 +364,17 @@ import Buttons from "~/components/ui/Buttons.vue";
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(45%, 1fr));
   grid-gap: 20px;
+
+  @include bp($point_2) {
+    grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+    gap: 10px;
+  }
 }
 
 .confirm_total {
   padding: 24px 24px 40px 24px;
+  @include bp($point_2) {
+    padding: 15px 10px;
+  }
 }
 </style>

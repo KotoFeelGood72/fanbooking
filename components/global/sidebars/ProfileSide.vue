@@ -27,6 +27,9 @@ import Buttons from "~/components/ui/Buttons.vue";
 <style scoped lang="scss">
 .profile-side {
   width: 260px;
+  @include bp($point_2) {
+    width: 100%;
+  }
 
   ul {
     border-radius: 10px;

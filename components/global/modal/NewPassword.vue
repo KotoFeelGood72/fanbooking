@@ -1,25 +1,19 @@
 <template>
-  <div class="login">
-    <div class="modal_bg" @click="closeModal('login')"></div>
-    <div class="login_main">
-      <div class="close_modal" @click="closeModal('login')">
+  <div class="new">
+    <div class="modal_bg" @click="closeModal('news')"></div>
+    <div class="new_main">
+      <div class="close_modal" @click="closeModal('news')">
         <img src="../../../assets/sprite/svg/closer.svg" alt="" />
       </div>
-      <div class="login_head">
-        <h3>Войдите в профиль</h3>
-        <p>Чтобы обращаться в поддержку и следить за ценами на нужные билеты</p>
+      <div class="new_head">
+        <h3>Восстановление пароля</h3>
+        <p>Придумайте новый пароль</p>
       </div>
-      <div class="login_form">
-        <Inputs placeholder="E-mail" type="email" />
-        <Inputs placeholder="Пароль" type="password" />
-        <Buttons name="Войти" @click="pushAccount()" />
-        <div class="reset_pass" @click="changeModal">Забыли пароль?</div>
+      <div class="new_form">
+        <Inputs placeholder="Новый пароль" type="password" />
+        <Inputs placeholder="Подтвердите пароль" type="password" />
+        <Buttons name="Сохранить" @click="pushAccount" />
       </div>
-      <Buttons
-        name="Создать новый аккаунт"
-        sheme="secondary"
-        @click="openSign"
-      />
     </div>
   </div>
 </template>
@@ -27,30 +21,23 @@
 <script setup lang="ts">
 import Inputs from "~/components/ui/Inputs.vue";
 import Buttons from "~/components/ui/Buttons.vue";
+import Checkboxes from "~/components/ui/Checkboxes.vue";
 import { useModalStore } from "~/store/useModalStore";
 import { useRouter } from "vue-router";
+
+const agreement = ref<boolean>();
 
 const { closeModal, openModal } = useModalStore();
 const router = useRouter();
 
 function pushAccount() {
-  closeModal("login");
+  closeModal("news");
   router.push("/account");
-}
-
-function changeModal() {
-  closeModal("login");
-  openModal("resets");
-}
-
-function openSign() {
-  closeModal("login");
-  openModal("sign");
 }
 </script>
 
 <style scoped lang="scss">
-.login {
+.new {
   position: fixed;
   top: 0;
   left: 0;
@@ -58,7 +45,6 @@ function openSign() {
   height: 100%;
   @include flex-center;
   z-index: 101;
-
   @include bp($point_2) {
     padding: 20px;
   }
@@ -75,7 +61,7 @@ function openSign() {
   backdrop-filter: blur(20px);
 }
 
-.login_main {
+.new_main {
   position: relative;
   background-color: $white;
   max-width: 484px;
@@ -88,23 +74,31 @@ function openSign() {
   @include bp($point_2) {
     max-width: 100%;
     padding: 30px 20px;
-    max-width: 100%;
+  }
+
+  .back {
+    max-width: 263px;
+    margin: 0 auto;
+    :deep(button) {
+      color: $blue;
+      background-color: transparent;
+      border: 1px solid $blue;
+      &:hover {
+        background-color: $blue;
+        color: $white;
+      }
+    }
   }
 }
 
-.login_form {
+.new_form {
   display: flex;
   flex-direction: column;
   gap: 10px;
   text-align: center;
 }
 
-.reset_pass {
-  color: $blue;
-  cursor: pointer;
-}
-
-.login_head {
+.new_head {
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -125,5 +119,9 @@ function openSign() {
   height: 20px;
   @include flex-center;
   cursor: pointer;
+}
+
+.form_agreement {
+  padding: 10px 0;
 }
 </style>

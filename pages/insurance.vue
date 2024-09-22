@@ -30,8 +30,8 @@
               <span>Россия</span>
             </li>
             <li class="danger">
-              NOTE: сейчас не можем обрабатывать перс.данные граждан других стран, кроме
-              РФ. Позднее сможем.
+              NOTE: сейчас не можем обрабатывать перс.данные граждан других
+              стран, кроме РФ. Позднее сможем.
             </li>
           </ul>
         </div>
@@ -65,8 +65,8 @@
               </div>
             </div>
             <div class="insurance_note">
-              Бронирование отправим на указанный E-mail. Также оно будет доступно в личном
-              кабинете
+              Бронирование отправим на указанный E-mail. Также оно будет
+              доступно в личном кабинете
             </div>
             <div class="added" @click="addRow">
               <img src="../assets/sprite/svg/plus.svg" alt="" />
@@ -76,25 +76,26 @@
         </div>
         <div class="insurance__text">
           <p>
-            Из-за действующих ограничительных мер со стороны ЕС российские полисы не
-            принимаются всеми консульствами стран Евросоюза – при наступлении страхового
-            случая лечебное учреждение не сможет получить выплату от российского
-            страховщика.
+            Из-за действующих ограничительных мер со стороны ЕС российские
+            полисы не принимаются всеми консульствами стран Евросоюза – при
+            наступлении страхового случая лечебное учреждение не сможет получить
+            выплату от российского страховщика.
           </p>
           <p>
-            Приобретите с нами полис медицинского страхования только от страховых
-            компаний, расположенных в Европе. Мы работаем с компаниями Франции и Германии,
-            Нидерландов и Италии.
+            Приобретите с нами полис медицинского страхования только от
+            страховых компаний, расположенных в Европе. Мы работаем с компаниями
+            Франции и Германии, Нидерландов и Италии.
           </p>
           <p>
-            С помощью fun-booking.ru вы приобретете полис с покрытием расходов, которые
-            могут возникнуть в связи с репатриацией по медицинским причинам, срочной
-            медицинской помощью, экстренной госпитализацией или смертью заявителя во время
-            пребывания. 
+            С помощью fun-booking.ru вы приобретете полис с покрытием расходов,
+            которые могут возникнуть в связи с репатриацией по медицинским
+            причинам, срочной медицинской помощью, экстренной госпитализацией
+            или смертью заявителя во время пребывания. 
           </p>
           <strong>Страховое покрытие не менее 30.000 евро. </strong>
           <p>
-            Пожалуйста, приносите на подачу документов визы полис, распечатанный в цвете
+            Пожалуйста, приносите на подачу документов визы полис, распечатанный
+            в цвете
           </p>
         </div>
         <div class="insurance_type">
@@ -197,13 +198,20 @@ import InputSoloDate from "~/components/ui/InputSoloDate.vue";
 import Checkboxes from "~/components/ui/Checkboxes.vue";
 import Buttons from "~/components/ui/Buttons.vue";
 
-const travelers = ref([{ lastName: "", firstName: "", birthDate: "", email: "" }]);
+const travelers = ref([
+  { lastName: "", firstName: "", birthDate: "", email: "" },
+]);
 
 const selectedType = ref<string>("type-1");
 const selectedSubType = ref<string>("window-1");
 
 function addRow() {
-  travelers.value.push({ lastName: "", firstName: "", birthDate: "", email: "" });
+  travelers.value.push({
+    lastName: "",
+    firstName: "",
+    birthDate: "",
+    email: "",
+  });
 }
 </script>
 
@@ -211,6 +219,9 @@ function addRow() {
 .insurance {
   background-color: $light;
   padding-bottom: 120px;
+  @include bp($point_2) {
+    padding-bottom: 60px;
+  }
 }
 
 .insurance__head {
@@ -220,6 +231,9 @@ function addRow() {
   margin-bottom: 36px;
   h1 {
     font-size: 32px;
+    @include bp($point_2) {
+      font-size: 20px;
+    }
   }
 }
 
@@ -227,6 +241,9 @@ function addRow() {
   background-color: $white;
   padding: 20px 40px;
   border-radius: 10px;
+  @include bp($point_2) {
+    padding: 15px 10px;
+  }
 }
 
 .list_insurance,
@@ -236,6 +253,10 @@ function addRow() {
   padding: 20px 40px;
   border-radius: 10px;
   margin-top: 20px;
+  @include bp($point_2) {
+    padding: 15px 10px;
+    margin-top: 10px;
+  }
 }
 
 .list_insurance__head {
@@ -245,8 +266,22 @@ function addRow() {
   padding-bottom: 23px;
   border-bottom: 1px solid $l-gray;
   margin-bottom: 30px;
+  @include bp($point_2) {
+    gap: 0;
+    padding-bottom: 17px;
+    margin-bottom: 20px;
+  }
+
+  .danger {
+    @include bp($point_2) {
+      margin-top: -10px;
+    }
+  }
   h3 {
     font-size: 32px;
+    @include bp($point_2) {
+      font-size: 20px;
+    }
   }
   p {
     color: $red;
@@ -277,6 +312,10 @@ function addRow() {
 .insurance-title {
   font-size: 32px;
   margin-bottom: 11px;
+  @include bp($point_2) {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
 }
 
 .insurance__details {
@@ -288,14 +327,29 @@ function addRow() {
     gap: 11px 100px;
     max-width: 820px;
     font-size: 14px;
+
+    @include bp($point_2) {
+      max-width: 100%;
+      max-height: 100%;
+      gap: 10px;
+    }
     li {
       display: flex;
       align-items: center;
       gap: 20px;
+
+      &:nth-child(4) {
+        @include bp($point_2) {
+          margin-bottom: 31px;
+        }
+      }
       p {
         color: $gray;
         font-weight: 600;
         min-width: 140px;
+        @include bp($point_2) {
+          opacity: 0.6;
+        }
       }
       span {
         font-weight: 600;
@@ -308,6 +362,10 @@ function addRow() {
   max-width: 442px;
   color: $red;
   font-weight: 600;
+  @include bp($point_2) {
+    max-width: 317px;
+    width: 100%;
+  }
 }
 
 .list_insurance__head {
@@ -318,22 +376,37 @@ function addRow() {
 }
 .list_insurance__row {
   max-width: 830px;
+  @include bp($point_2) {
+    max-width: 100%;
+  }
   & > p {
     flex-grow: 1;
     width: 100%;
     font-size: 20px;
     margin-bottom: 20px;
+    @include bp($point_2) {
+      margin-bottom: 0;
+    }
   }
 
   :deep(.dp__input_wrap) {
     max-width: 140px;
+    @include bp($point_2) {
+      max-width: 100%;
+    }
   }
   :deep(.input) {
     max-width: 220px;
+    @include bp($point_2) {
+      max-width: 100%;
+    }
   }
 }
 
 .list_col {
+  @include bp($point_2) {
+    width: 100%;
+  }
   p {
     margin-bottom: 5px;
   }
@@ -403,5 +476,8 @@ function addRow() {
 
 .payment_btn {
   display: inline-flex;
+  @include bp($point_2) {
+    width: 100%;
+  }
 }
 </style>

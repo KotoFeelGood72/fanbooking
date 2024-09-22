@@ -39,16 +39,19 @@
         </div>
         <div class="single_row row__text">
           <p>
-            Получите и распечатайте бланк бронирования для оформления визы, прохождения
-            паспортного, таможенного досмотров и прочих формальностей.
+            Получите и распечатайте бланк бронирования для оформления визы,
+            прохождения паспортного, таможенного досмотров и прочих
+            формальностей.
           </p>
           <p>
-            Бронь будет поддерживаться для проверки до <span>05 мар, 2024</span> и
-            отменится автоматически, без дополнительных платежей.
+            Бронь будет поддерживаться для проверки до
+            <span>05 мар, 2024</span> и отменится автоматически, без
+            дополнительных платежей.
           </p>
           <p>
-            По истечении брони, вы сможете приобрести полноценный билет для перелета по
-            выбранному маршруту с нашей помощью и по актуальной цене на дату обращения."
+            По истечении брони, вы сможете приобрести полноценный билет для
+            перелета по выбранному маршруту с нашей помощью и по актуальной цене
+            на дату обращения."
           </p>
         </div>
         <div class="single_row row__clients">
@@ -78,8 +81,8 @@
               <Inputs />
             </div>
             <div class="note__col">
-              Бронирование отправим на указанный E-mail. Также оно будет доступно в личном
-              кабинете
+              Бронирование отправим на указанный E-mail. Также оно будет
+              доступно в личном кабинете
             </div>
           </div>
           <div class="row_clients_bottom">
@@ -89,7 +92,11 @@
               v-model="confirm"
             />
             <div class="form_btn">
-              <Buttons name="Завершить оформление" size="medium" @click="confirmAir()" />
+              <Buttons
+                name="Завершить оформление"
+                size="medium"
+                @click="confirmAir()"
+              />
             </div>
           </div>
         </div>
@@ -121,6 +128,9 @@ function confirmAir() {
 .single-air {
   background-color: $light;
   padding: 30px 0 100px 0;
+  @include bp($point_2) {
+    padding: 0 0 60px 0;
+  }
 }
 
 .single_air__head {
@@ -129,18 +139,31 @@ function confirmAir() {
   flex-direction: column;
   gap: 10px;
   margin-bottom: 30px;
+  @include bp($point_2) {
+    margin-bottom: 23px;
+  }
   h1 {
     font-size: 32px;
     font-weight: 600;
+    @include bp($point_2) {
+      font-size: 20px;
+    }
   }
   p {
     font-size: 24px;
+    @include bp($point_2) {
+      font-size: 16px;
+    }
   }
 }
 
 .single_row {
   @include flex-start;
   gap: 20px;
+  @include bp($point_2) {
+    flex-direction: column;
+    gap: 10px;
+  }
 }
 
 .single_air__price {
@@ -151,6 +174,11 @@ function confirmAir() {
   max-width: 382px;
   @include flex-center;
   min-height: 240px;
+  @include bp($point_2) {
+    min-height: auto;
+    padding: 22px;
+    max-width: 100%;
+  }
   .price {
     @include flex-center;
     gap: 10px;
@@ -173,6 +201,10 @@ function confirmAir() {
 .single_air__info {
   flex-grow: 1;
   min-height: 240px;
+  @include bp($point_2) {
+    min-height: auto;
+    width: 100%;
+  }
 
   ul {
     padding: 13px 13px 25px 13px;
@@ -181,6 +213,9 @@ function confirmAir() {
     color: $l-gray;
     font-size: 14px;
     font-weight: 600;
+    @include bp($point_2) {
+      font-size: 10px;
+    }
   }
 }
 
@@ -221,9 +256,17 @@ function confirmAir() {
   display: block;
   padding: 30px 40px;
   font-size: 20px;
+  @include bp($point_2) {
+    padding: 10px 15px;
+  }
   p {
     padding: 10px 0;
     line-height: 140%;
+    @include bp($point_2) {
+      padding: 5px 0;
+      font-size: 16px;
+      font-weight: 400;
+    }
   }
 
   span,
@@ -244,10 +287,16 @@ function confirmAir() {
   h3 {
     font-size: 32px;
     font-weight: 600;
+    @include bp($point_2) {
+      font-size: 20px;
+    }
   }
   p {
     font-size: 20px;
     color: $red;
+    @include bp($point_2) {
+      font-size: 16px;
+    }
   }
 }
 
@@ -255,6 +304,10 @@ function confirmAir() {
   flex-direction: column;
   align-items: flex-start;
   padding: 40px;
+
+  @include bp($point_2) {
+    padding: 15px 10px;
+  }
 }
 
 .row_clients__form {
@@ -262,14 +315,32 @@ function confirmAir() {
   align-items: flex-start;
   flex-wrap: wrap;
   gap: 23px 10px;
+  @include bp($point_2) {
+    gap: 15px;
+  }
 }
 
 .input__col {
   max-width: 220px;
+  @include bp($point_2) {
+    max-width: 100%;
+    width: calc(50% - 10px);
+  }
+
+  &:nth-child(3),
+  &:nth-child(4),
+  &:nth-child(5) {
+    @include bp($point_2) {
+      width: 100%;
+    }
+  }
   :deep(.dp__input) {
     font-size: 16px !important;
     color: $gray;
     max-width: 150px;
+    @include bp($point_2) {
+      max-width: 100%;
+    }
   }
   p {
     margin-bottom: 4px;
@@ -292,6 +363,9 @@ function confirmAir() {
   display: inline-flex;
   :deep(div) {
     width: auto;
+    @include bp($point_2) {
+      width: 100%;
+    }
   }
 }
 

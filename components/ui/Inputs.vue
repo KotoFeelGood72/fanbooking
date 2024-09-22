@@ -1,7 +1,12 @@
 <template>
   <div class="input">
     <div class="input__w">
-      <input :type="type" :placeholder="placeholder" />
+      <input
+        :type="type"
+        :placeholder="placeholder"
+        autocomplete="off"
+        name="no-autocomplete"
+      />
     </div>
     <span v-if="error" class="input-message">{{ message }}</span>
   </div>

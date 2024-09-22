@@ -31,7 +31,10 @@
           <div class="profile_region">
             <div class="profile_content__head">
               <h3>Региональные</h3>
-              <p>Нужны для отображения подходящих билетов и правил вьезда в страну</p>
+              <p>
+                Нужны для отображения подходящих билетов и правил вьезда в
+                страну
+              </p>
             </div>
             <div class="profile_region__form">
               <div class="profile_region__input">
@@ -117,12 +120,19 @@ const region = ref<any>({
   h1 {
     font-size: 32px;
     margin-bottom: 27px;
+    @include bp($point_2) {
+      font-size: 20px;
+      margin-bottom: 25px;
+    }
   }
 }
 .profile_main {
   @include flex-start;
   align-items: flex-start;
   gap: 37px;
+  @include bp($point_2) {
+    flex-direction: column;
+  }
 }
 
 .profile_content {
@@ -139,6 +149,10 @@ const region = ref<any>({
   border-radius: 10px;
   background: $white;
   padding: 27px 32px 47px 43px;
+
+  @include bp($point_2) {
+    padding: 15px 10px;
+  }
 }
 
 .profile_content__head {
@@ -150,6 +164,12 @@ const region = ref<any>({
   display: flex;
   flex-direction: column;
   gap: 8px;
+
+  h3 {
+    @include bp($point_2) {
+      font-size: 20px;
+    }
+  }
   & > p {
     color: $m-gray;
     font-size: 16px;
@@ -159,6 +179,12 @@ const region = ref<any>({
 
   h6 {
     font-size: 20px;
+
+    @include bp($point_2) {
+      font-size: 16px;
+      font-family: $font_2;
+      font-weight: 500;
+    }
   }
 }
 
@@ -166,6 +192,10 @@ const region = ref<any>({
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(45%, 1fr));
   gap: 20px;
+
+  @include bp($point_2) {
+    grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+  }
   p {
     margin-bottom: 4px;
   }
@@ -179,7 +209,14 @@ const region = ref<any>({
 .profile_personal__form {
   @include flex-start;
   gap: 10px;
+
+  @include bp($point_2) {
+    flex-direction: column;
+  }
   .profile_personal__input {
+    @include bp($point_2) {
+      width: 100%;
+    }
     p {
       margin-bottom: 4%;
     }
@@ -187,6 +224,9 @@ const region = ref<any>({
     :deep(.dp__input) {
       font-size: 16px !important;
       max-width: 170px;
+      @include bp($point_2) {
+        max-width: 100%;
+      }
     }
   }
 }

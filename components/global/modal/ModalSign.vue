@@ -53,6 +53,9 @@ function pushAccount() {
   height: 100%;
   @include flex-center;
   z-index: 99;
+  @include bp($point_2) {
+    padding: 20px;
+  }
 }
 
 .modal_bg {
@@ -75,6 +78,11 @@ function pushAccount() {
   display: flex;
   flex-direction: column;
   gap: 20px;
+
+  @include bp($point_2) {
+    max-width: 100%;
+    padding: 30px 20px;
+  }
 }
 
 .sign_form {

@@ -10,6 +10,7 @@
 
 <script setup lang="ts">
 import AuthDropDown from "./AuthDropDown.vue";
+import { useRoute } from "vue-router";
 const userName = ref<string>("Личный кабинет");
 const props = defineProps<{
   bg?: boolean;
@@ -20,6 +21,15 @@ const authState = ref<boolean>(false);
 function openAuth() {
   authState.value = !authState.value;
 }
+
+const route = useRoute();
+
+watch(
+  () => route.fullPath,
+  () => {
+    authState.value = false;
+  }
+);
 </script>
 
 <style scoped lang="scss">
@@ -50,5 +60,8 @@ function openAuth() {
 .lk_button__username {
   font-size: 16px;
   transition: all 0.3s ease-in-out;
+  @include bp($point_2) {
+    display: none;
+  }
 }
 </style>

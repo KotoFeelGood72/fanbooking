@@ -16,12 +16,20 @@
         </div>
       </div>
       <div class="aircenter__medium">
-        <div :class="['air_transfer__line', { 'no-transfer-parent': hasNoTransfer }]">
+        <div
+          :class="[
+            'air_transfer__line',
+            { 'no-transfer-parent': hasNoTransfer },
+          ]"
+        >
           <div class="points">
             <span
               v-for="(transfer, index) in allStops"
               :key="index"
-              :class="['point', { 'no-transfer': transfer === 'без пересадок' }]"
+              :class="[
+                'point',
+                { 'no-transfer': transfer === 'без пересадок' },
+              ]"
             >
               <span class="transfer">{{ transfer }}</span>
             </span>
@@ -91,6 +99,9 @@ const hasNoTransfer = computed(() => {
   @include flex-space;
   gap: 58px;
   padding: 23px 0;
+  @include bp($point_2) {
+    gap: 20px;
+  }
   &:not(:last-child) {
     border-bottom: 1px solid $l-gray;
   }
@@ -105,35 +116,53 @@ const hasNoTransfer = computed(() => {
     .airtime {
       font-size: 30px;
       font-weight: 400;
+      @include bp($point_2) {
+        font-size: 20px;
+      }
     }
 
     .aircity {
       font-size: 18px;
       color: $blue;
       font-weight: 400;
+      @include bp($point_2) {
+        font-size: 12px;
+      }
     }
 
     .airdate {
       font-size: 18px;
       color: $m-gray;
       font-weight: 400;
+      @include bp($point_2) {
+        font-size: 10px;
+      }
     }
   }
 }
 
 .air_center {
   flex-grow: 1;
+  @include bp($point_2) {
+    margin-top: -10px;
+  }
 }
 
 .aircenter__head {
   @include flex-space;
   margin-bottom: 15px;
+  @include bp($point_2) {
+    margin-bottom: 5px;
+  }
 }
 
 .air_center__time {
   font-size: 14px;
   font-weight: 500;
   color: $m-gray;
+  @include bp($point_2) {
+    font-size: 10px;
+  }
 }
 
 .aircenter__medium {
@@ -217,6 +246,9 @@ const hasNoTransfer = computed(() => {
   font-weight: 500;
   @include flex-center;
   padding-top: 4px;
+  @include bp($point_2) {
+    font-size: 10px;
+  }
 }
 
 .point.no-transfer {
@@ -227,6 +259,9 @@ const hasNoTransfer = computed(() => {
     font-weight: 500;
     margin: 0 -10px 0 -10px;
     padding-top: 14px;
+    @include bp($point_2) {
+      font-size: 10px;
+    }
   }
   &:before {
     max-width: 170% !important;

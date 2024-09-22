@@ -72,11 +72,32 @@ const formatDateRange = (range: [Date | null, Date | null]) => {
 <style scoped lang="scss">
 .air-date {
   width: 280px;
+  @include bp($point_2) {
+    width: 100%;
+  }
 }
 :deep(.dp__input) {
   font-size: 12px !important;
   height: 40px;
   border-radius: 7px;
+  @include bp($point_2) {
+    width: 100%;
+  }
+}
+:deep(.dp__input_wrap, .dp__main, .dp__main div) {
+  @include bp($point_2) {
+    width: 100%;
+  }
+}
+:deep(.dp__main) {
+  @include bp($point_2) {
+    width: 100%;
+  }
+}
+:deep(.dp__main div) {
+  @include bp($point_2) {
+    width: 100%;
+  }
 }
 
 :deep(.dp__input) {
@@ -88,6 +109,9 @@ const formatDateRange = (range: [Date | null, Date | null]) => {
 :deep(.dp__input_icon) {
   right: 20px;
   left: auto;
+  @include bp($point_2) {
+    right: 2px;
+  }
 }
 
 :deep(.dp__input .date-label) {

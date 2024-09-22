@@ -1,6 +1,8 @@
 <template>
   <div class="block_action__w">
-    <h3>Выбрать и оплатить российской картой полисы страховых компаний Евросоюза</h3>
+    <h3>
+      Выбрать и оплатить российской картой полисы страховых компаний Евросоюза
+    </h3>
     <div class="block_action">
       <div class="block_action__img">
         <img src="../../public/img/action.png" alt="" />
@@ -10,7 +12,11 @@
           <li v-for="(item, i) in list" :key="'list-item-' + i">{{ item }}</li>
         </ul>
         <div class="blockAction__btn">
-          <Buttons name="Получить страховку" size="medium" class="custom-padding" />
+          <Buttons
+            name="Получить страховку"
+            size="medium"
+            class="custom-padding"
+          />
         </div>
       </div>
     </div>
@@ -32,6 +38,9 @@ const list = ref<string[]>([
 <style scoped lang="scss">
 .block_action__w {
   padding: 100px 0;
+  @include bp($point_2) {
+    padding: 0;
+  }
   h3 {
     font-size: 40px;
     font-weight: 400;
@@ -39,6 +48,12 @@ const list = ref<string[]>([
     line-height: 130%;
     max-width: 960px;
     margin: 0 auto 50px auto;
+    @include bp($point_2) {
+      font-size: 28px;
+      padding: 0 9px;
+      text-align: center;
+      margin: 0 auto 20px auto;
+    }
   }
 }
 
@@ -56,6 +71,9 @@ const list = ref<string[]>([
   border-radius: 20px;
   overflow: hidden;
   z-index: -1;
+  @include bp($point_2) {
+    height: 190px;
+  }
   img {
     width: 100%;
     height: 100%;
@@ -71,6 +89,10 @@ const list = ref<string[]>([
   margin-top: 147px;
   max-width: 1392px;
   width: 100%;
+  @include bp($point_2) {
+    max-width: 97%;
+    padding: 33px 9px 34px 27px;
+  }
   ul {
     max-width: 964px;
     margin-bottom: 44px;
@@ -78,12 +100,21 @@ const list = ref<string[]>([
     flex-wrap: wrap;
     gap: 32px;
 
+    @include bp($point_2) {
+      gap: 16px;
+      margin-bottom: 15px;
+    }
+
     li {
       width: 47%;
       position: relative;
       padding-left: 29px;
       font-size: 20px;
       color: $gray;
+      @include bp($point_2) {
+        width: 100%;
+        font-size: 16px;
+      }
       &:before {
         position: absolute;
         top: 3px;

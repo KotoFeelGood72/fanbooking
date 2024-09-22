@@ -22,8 +22,15 @@ import VueDatePicker from "@vuepic/vue-datepicker";
 import "@vuepic/vue-datepicker/dist/main.css";
 
 const props = defineProps<{
-  modelValue: Date | null;
-  mode: "туда" | "обратно" | "дд.мм.гггг" | "заезд" | "выезд" | "окончание" | "начало";
+  modelValue: any;
+  mode:
+    | "туда"
+    | "обратно"
+    | "дд.мм.гггг"
+    | "заезд"
+    | "выезд"
+    | "окончание"
+    | "начало";
 }>();
 
 const emit = defineEmits<{
@@ -32,7 +39,9 @@ const emit = defineEmits<{
 
 const today = new Date();
 const minDate = computed(() => {
-  return ["дд.мм.гггг", "окончание", "начало"].includes(props.mode) ? undefined : today;
+  return ["дд.мм.гггг", "окончание", "начало"].includes(props.mode)
+    ? undefined
+    : today;
 });
 
 const placeholder = computed(() => {
@@ -64,7 +73,10 @@ const localValue = computed<Date | null>({
 });
 
 onMounted(() => {
-  if (!props.modelValue && !["дд.мм.гггг", "окончание", "начало"].includes(props.mode)) {
+  if (
+    !props.modelValue &&
+    !["дд.мм.гггг", "окончание", "начало"].includes(props.mode)
+  ) {
     emit("update:modelValue", today);
   }
 });
@@ -92,6 +104,9 @@ const shouldDisableYearSelect = computed(
 <style scoped lang="scss">
 .air-date {
   //   width: 280px;
+  @include bp($point_2) {
+    width: 100%;
+  }
 }
 :deep(.dp__input) {
   font-size: 12px !important;

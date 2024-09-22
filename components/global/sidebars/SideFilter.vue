@@ -1,130 +1,144 @@
 <template>
   <div class="sidebar_w">
-    <div class="sidebar">
-      <div class="filter_head">
+    <div class="sidebar" :class="{ active: filterMobile }">
+      <div class="filter_head" @click="filterMobile = !filterMobile">
         <h3>Фильтры</h3>
         <div class="filter_allreset">
           <svg-icon name="close" />
           <span>Сбросить</span>
         </div>
       </div>
-      <div class="filters-section">
-        <Accardion title="Пересадки">
-          <template #reset>
-            <button>Сбросить</button>
-          </template>
-          <template #content>
-            <div class="filters">
-              <Checkboxes
-                id="all-airlines"
-                label="1 пересадка"
-                v-model="allAirlines"
-                note="45 000 ₽"
-              />
-              <Checkboxes
-                id="all-airlines"
-                label="2 и более пересадок"
-                v-model="allAirlines"
-                note="60 000 ₽"
-              />
-            </div>
-          </template>
-        </Accardion>
-      </div>
-      <div class="filters-section">
-        <Accardion title="Авиакомпании">
-          <template #reset>
-            <button>Сбросить</button>
-          </template>
-          <template #content>
-            <div class="filters">
-              <Checkboxes id="all-airlines" label="Все" v-model="allAirlines" />
-              <Checkboxes
-                id="all-airlines"
-                label="Etihad Airways"
-                v-model="allAirlines"
-              />
-              <Checkboxes
-                id="all-airlines"
-                label="Азербайджанские авиалинии (Azal)"
-                v-model="allAirlines"
-              />
-              <Checkboxes
-                id="all-airlines"
-                label="Etihad Airways"
-                v-model="allAirlines"
-              />
-              <Checkboxes id="all-airlines" label="Air Arabia" v-model="allAirlines" />
-              <Checkboxes id="all-airlines" label="Gulf Air" v-model="allAirlines" />
-              <Checkboxes
-                id="all-airlines"
-                label="Uzbekistan Airways"
-                v-model="allAirlines"
-              />
-            </div>
-          </template>
-        </Accardion>
-      </div>
-      <div class="filters-section">
-        <Accardion title="Время в пути">
-          <template #content>
-            <div class="filters">
-              <InputRange
-                label="Всего"
-                :min="0"
-                :max="24"
-                :step="1"
-                :modelValue="12"
-                unit="hours"
-                @update:modelValue="updateDuration"
-              />
-            </div>
-          </template>
-        </Accardion>
-      </div>
-      <div class="filters-section">
-        <Accardion title="Вылет и прибытие">
-          <template #content>
-            <div class="filters">
-              <InputRange
-                label="Отправление"
-                :min="0"
-                :max="1440"
-                :step="1 / 60"
-                :modelValue="420"
-                unit="time"
-                @update:modelValue="updateTime"
-              />
-              <DoubleRange
-                label="Прибытие"
-                :min="0"
-                :max="48"
-                :step="0.5"
-                :startValue="arrivalStart"
-                :endValue="arrivalEnd"
-                @update:startValue="arrivalStart = $event"
-                @update:endValue="arrivalEnd = $event"
-              />
-            </div>
-          </template>
-        </Accardion>
-      </div>
-      <div class="filters-section">
-        <Accardion title="Стоимость">
-          <template #content>
-            <div class="filters">
-              <InputRange
-                label="Всего"
-                :min="0"
-                :max="100000"
-                :step="1000"
-                :modelValue="75000"
-                unit="currency"
-                @update:modelValue="updateCurrency"
-              />
-            </div>
-          </template>
-        </Accardion>
+      <div class="filter__section_w" :class="{ active: filterMobile }">
+        <div class="filters-section">
+          <Accardion title="Пересадки">
+            <template #reset>
+              <button>Сбросить</button>
+            </template>
+            <template #content>
+              <div class="filters">
+                <Checkboxes
+                  id="all-airlines"
+                  label="1 пересадка"
+                  v-model="allAirlines"
+                  note="45 000 ₽"
+                />
+                <Checkboxes
+                  id="all-airlines"
+                  label="2 и более пересадок"
+                  v-model="allAirlines"
+                  note="60 000 ₽"
+                />
+              </div>
+            </template>
+          </Accardion>
+        </div>
+        <div class="filters-section">
+          <Accardion title="Авиакомпании">
+            <template #reset>
+              <button>Сбросить</button>
+            </template>
+            <template #content>
+              <div class="filters">
+                <Checkboxes
+                  id="all-airlines"
+                  label="Все"
+                  v-model="allAirlines"
+                />
+                <Checkboxes
+                  id="all-airlines"
+                  label="Etihad Airways"
+                  v-model="allAirlines"
+                />
+                <Checkboxes
+                  id="all-airlines"
+                  label="Азербайджанские авиалинии (Azal)"
+                  v-model="allAirlines"
+                />
+                <Checkboxes
+                  id="all-airlines"
+                  label="Etihad Airways"
+                  v-model="allAirlines"
+                />
+                <Checkboxes
+                  id="all-airlines"
+                  label="Air Arabia"
+                  v-model="allAirlines"
+                />
+                <Checkboxes
+                  id="all-airlines"
+                  label="Gulf Air"
+                  v-model="allAirlines"
+                />
+                <Checkboxes
+                  id="all-airlines"
+                  label="Uzbekistan Airways"
+                  v-model="allAirlines"
+                />
+              </div>
+            </template>
+          </Accardion>
+        </div>
+        <div class="filters-section">
+          <Accardion title="Время в пути">
+            <template #content>
+              <div class="filters">
+                <InputRange
+                  label="Всего"
+                  :min="0"
+                  :max="24"
+                  :step="1"
+                  :modelValue="12"
+                  unit="hours"
+                  @update:modelValue="updateDuration"
+                />
+              </div>
+            </template>
+          </Accardion>
+        </div>
+        <div class="filters-section">
+          <Accardion title="Вылет и прибытие">
+            <template #content>
+              <div class="filters">
+                <InputRange
+                  label="Отправление"
+                  :min="0"
+                  :max="1440"
+                  :step="1 / 60"
+                  :modelValue="420"
+                  unit="time"
+                  @update:modelValue="updateTime"
+                />
+                <DoubleRange
+                  label="Прибытие"
+                  :min="0"
+                  :max="48"
+                  :step="0.5"
+                  :startValue="arrivalStart"
+                  :endValue="arrivalEnd"
+                  @update:startValue="arrivalStart = $event"
+                  @update:endValue="arrivalEnd = $event"
+                />
+              </div>
+            </template>
+          </Accardion>
+        </div>
+        <div class="filters-section">
+          <Accardion title="Стоимость">
+            <template #content>
+              <div class="filters">
+                <InputRange
+                  label="Всего"
+                  :min="0"
+                  :max="100000"
+                  :step="1000"
+                  :modelValue="75000"
+                  unit="currency"
+                  @update:modelValue="updateCurrency"
+                />
+              </div>
+            </template>
+          </Accardion>
+        </div>
       </div>
     </div>
   </div>
@@ -140,6 +154,7 @@ const allAirlines = ref<boolean>(false);
 const totalTime = ref(12);
 const arrivalStart = ref(6);
 const arrivalEnd = ref(19);
+const filterMobile = ref<boolean>(false);
 
 const updateCurrency = (newValue: any) => {
   console.log("Updated currency value:", newValue);
@@ -159,6 +174,11 @@ const updateDuration = (newValue: any) => {
   min-height: 100vh;
   height: 100%;
   min-width: 280px;
+  @include bp($point_2) {
+    width: 100%;
+    max-width: 100%;
+    min-height: auto;
+  }
   // display: flex;
   // flex-direction: column;
 }
@@ -173,11 +193,38 @@ const updateDuration = (newValue: any) => {
   box-shadow: 0px 2px 15.4px 0px rgba(0, 0, 0, 0.09);
   background-color: $white;
   padding: 19px 16px;
+
+  @include bp($point_2) {
+    padding-top: 0;
+    padding-bottom: 0;
+    width: 100%;
+    max-width: 100%;
+    box-shadow: none;
+    background-color: transparent;
+  }
+
+  &.active {
+    @include bp($point_2) {
+      padding-top: 19px;
+      padding-bottom: 19px;
+      box-shadow: 0px 2px 15.4px 0px rgba(0, 0, 0, 0.09);
+      background-color: $white;
+    }
+
+    .filter_head {
+      @include bp($point_2) {
+        margin-bottom: 30px;
+      }
+    }
+  }
 }
 
 .filter_head {
   @include flex-space;
   margin-bottom: 30px;
+  @include bp($point_2) {
+    margin-bottom: 0;
+  }
 }
 
 .filter_allreset {
@@ -262,5 +309,14 @@ const updateDuration = (newValue: any) => {
 
 .filters-section {
   margin-bottom: 20px;
+}
+
+.filter__section_w {
+  @include bp($point_2) {
+    display: none;
+  }
+  &.active {
+    display: block;
+  }
 }
 </style>

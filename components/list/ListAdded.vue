@@ -1,7 +1,11 @@
 <template>
   <div class="list_added">
     <p>{{ title }}</p>
-    <div v-for="(row, rowIndex) in inputs" :key="'row-' + rowIndex" class="list-row">
+    <div
+      v-for="(row, rowIndex) in inputs"
+      :key="'row-' + rowIndex"
+      class="list-row"
+    >
       <div class="row">
         <div
           class="col"
@@ -60,9 +64,16 @@ function addRow() {
 .row {
   @include flex-start;
   gap: 10px;
+
+  @include bp($point_2) {
+    flex-direction: column;
+  }
 }
 
 .col {
+  @include bp($point_2) {
+    width: 100%;
+  }
   p {
     margin-bottom: 4px;
   }

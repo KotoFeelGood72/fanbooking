@@ -2,7 +2,9 @@
   <div class="custom-select" ref="selectWrapper">
     <div class="select-box" @click="toggleDropdown">
       <p>{{ label }}</p>
-      <span>{{ selectedOption ? selectedOption.label : options[0].label }}</span>
+      <span>{{
+        selectedOption ? selectedOption.label : options[0].label
+      }}</span>
     </div>
     <div v-if="isOpen" class="options">
       <div
@@ -48,7 +50,10 @@ const selectOption = (option: Option) => {
 };
 
 const handleClickOutside = (event: MouseEvent) => {
-  if (selectWrapper.value && !selectWrapper.value.contains(event.target as Node)) {
+  if (
+    selectWrapper.value &&
+    !selectWrapper.value.contains(event.target as Node)
+  ) {
     isOpen.value = false;
   }
 };
@@ -99,6 +104,9 @@ onBeforeUnmount(() => {
 .option {
   padding: 10px;
   cursor: pointer;
+  @include bp($point_2) {
+    font-size: 12px;
+  }
 }
 
 .option:hover {

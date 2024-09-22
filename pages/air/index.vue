@@ -28,12 +28,25 @@ useHead({
 
 <style scoped lang="scss">
 .sidebars {
-  position: sticky;
-  top: 20px;
-  left: 0;
+  @include bp($point_2, $direction: min) {
+    position: sticky;
+    top: 20px;
+    left: 0;
+  }
 }
 .air-catalog {
   background-color: $light;
+  @include bp($point_2) {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .container {
+    @include bp($point_2) {
+      margin: 0;
+    }
+  }
 }
 
 .air-catalog__main {
@@ -43,6 +56,11 @@ useHead({
   padding-bottom: 150px;
   height: 100%;
   min-height: 100vh;
+
+  @include bp($point_2) {
+    flex-direction: column;
+    width: 100%;
+  }
 }
 
 .air_catalog__content {

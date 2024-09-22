@@ -13,11 +13,15 @@
               />
             </div>
             <div class="change_button" @click="changeDirections">
-              <img src="../../assets/sprite/svg/change.svg" alt="">
+              <img src="../../assets/sprite/svg/change.svg" alt="" />
             </div>
             <div class="blockFilter_direction__col">
               <p class="blockFilter_col__title">Куда</p>
-              <Selects label="куда" :options="cities" v-model="filterData.directionTo" />
+              <Selects
+                label="куда"
+                :options="cities"
+                v-model="filterData.directionTo"
+              />
             </div>
           </div>
           <div class="blockFilter__dates">
@@ -94,24 +98,41 @@ const changeDirections = () => {
 
 <style scoped lang="scss">
 .block_filter {
-  margin-bottom: 20px;
+  @include bp($point_2, $direction: min) {
+    margin-bottom: 20px;
+  }
 }
 
 .block_filter__main {
   background-color: $blue;
   padding: 15px 100px;
   border-radius: 7px;
+
+  @include bp($point_2) {
+    padding: 15px 12px;
+  }
 }
 
 .block_filter__row {
   @include flex-space;
   gap: 6px;
   margin-bottom: 8px;
+
+  @include bp($point_2) {
+    flex-direction: column;
+  }
 }
 
 .blockFilter__direction {
   @include flex-start;
   align-items: flex-end;
+
+  @include bp($point_2) {
+    width: 100%;
+    flex-direction: column;
+    position: relative;
+    gap: 10px;
+  }
 
   :deep(.custom-select) {
     background-color: $white;
@@ -135,6 +156,9 @@ const changeDirections = () => {
 .blockFilter__dates {
   @include flex-start;
   gap: 6px;
+  @include bp($point_2) {
+    width: 100%;
+  }
 }
 
 .change_button {
@@ -149,6 +173,16 @@ const changeDirections = () => {
   z-index: 22;
   cursor: pointer;
   color: $blue;
+
+  @include bp($point_2) {
+    position: absolute;
+    border: none;
+    // top: 50%;
+    top: 30px;
+    transform: rotate(90deg);
+    right: 20px;
+    // transform: translateY(-50%);
+  }
   .icons {
     width: 15px;
     height: 15px;
@@ -162,5 +196,21 @@ const changeDirections = () => {
 
 .blockFilter_date__col {
   max-width: 160px;
+  @include bp($point_2) {
+    max-width: 100%;
+  }
+}
+
+.blockFilter_direction__col {
+  @include bp($point_2) {
+    width: 100%;
+    position: relative;
+  }
+}
+
+.blockFilter_class {
+  @include bp($point_2) {
+    width: 100%;
+  }
 }
 </style>

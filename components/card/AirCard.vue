@@ -32,7 +32,11 @@
     </div>
     <div class="air_price">
       <div class="air_prices">45000 ₽</div>
-      <Buttons name="Купить эту бронь за 550 ₽" size="large" @click="pushAirId(1)" />
+      <Buttons
+        name="Купить эту бронь за 550 ₽"
+        size="large"
+        @click="pushAirId(1)"
+      />
     </div>
   </div>
 </template>
@@ -57,6 +61,10 @@ function pushAirId(id: number) {
   background: $white;
   @include flex-center;
   width: 100%;
+
+  @include bp($point_2) {
+    flex-direction: column;
+  }
 }
 .air_head {
   @include flex-space;
@@ -69,10 +77,17 @@ function pushAirId(id: number) {
   font-size: 18px;
   color: $blue;
   font-weight: 600;
+  @include bp($point_2) {
+    font-size: 14px;
+  }
   img {
     width: 40px;
     height: 40px;
     object-fit: cover;
+    @include bp($point_2) {
+      width: 29px;
+      height: 29px;
+    }
   }
 }
 
@@ -81,6 +96,10 @@ function pushAirId(id: number) {
   border-right: 1px solid $l-gray;
   width: 100%;
   max-width: 610px;
+  @include bp($point_2) {
+    padding: 20px 11px;
+    border: none;
+  }
 }
 
 .air-transfer {
@@ -98,6 +117,28 @@ function pushAirId(id: number) {
 .air_price {
   padding: 20px;
   text-align: center;
+  position: relative;
+
+  &:before {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 95%;
+    border-top: 1px solid #cecece;
+    content: "";
+  }
+  @include bp($point_2) {
+    @include flex-space;
+    padding: 17px 10px;
+    width: 100%;
+  }
+
+  :deep(.default-btn) {
+    @include bp($point_2) {
+      max-width: 200px;
+    }
+  }
 }
 
 .air_prices {
@@ -105,5 +146,8 @@ function pushAirId(id: number) {
   font-weight: 600;
   font-family: "Open-Sans", sans-serif;
   margin-bottom: 15px;
+  @include bp($point_2) {
+    margin-bottom: 0;
+  }
 }
 </style>

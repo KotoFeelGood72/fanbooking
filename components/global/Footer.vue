@@ -23,8 +23,8 @@
           </div>
         </div>
         <div class="footer_bottom">
-          Информация, размещенная на сайте, не является публичной офертой 1996-2024 Fun
-          booking © Портал Дешевых Авиабилетов Fun booking
+          Информация, размещенная на сайте, не является публичной офертой
+          1996-2024 Fun booking © Портал Дешевых Авиабилетов Fun booking
         </div>
       </div>
     </div>
@@ -46,12 +46,22 @@ import LkButton from "../ui/LkButton.vue";
 
 .footer__head {
   @include flex-space;
+  @include bp($point_2) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 .footer__nav {
   @include flex-end;
   align-items: flex-start;
   gap: 150px;
+  @include bp($point_2) {
+    margin-bottom: 76px;
+    gap: 55px 35px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
 }
 
 .footer__menu {
@@ -66,5 +76,20 @@ import LkButton from "../ui/LkButton.vue";
   opacity: 0.5;
   line-height: 140%;
   padding: 35px 0;
+
+  @include bp($point_2) {
+    font-size: 12px;
+    padding-top: 0;
+  }
+}
+
+.footer__nav {
+  &:deep(.lk-button) {
+    width: 100%;
+    justify-content: center;
+  }
+  &:deep(.lk_button__username) {
+    display: block;
+  }
 }
 </style>

@@ -4,7 +4,10 @@
       <div class="reserv_main">
         <div class="reserv_head">
           <h1>Получить проверяемое бронирование отеля</h1>
-          <p>Заполните сведения о поездке, и мы пришлём подтверждение бронирования</p>
+          <p>
+            Заполните сведения о поездке, и мы пришлём подтверждение
+            бронирования
+          </p>
         </div>
         <div class="reserv_content">
           <div class="reserv_form">
@@ -143,6 +146,9 @@ function pushHotelOrder() {
 .reserv {
   background-color: $light;
   padding-bottom: 80px;
+  @include bp($point_2) {
+    padding-bottom: 60px;
+  }
 }
 
 .reserv_head {
@@ -152,6 +158,9 @@ function pushHotelOrder() {
   margin-bottom: 36px;
   h1 {
     font-size: 32px;
+    @include bp($point_2) {
+      font-size: 20px;
+    }
   }
 }
 
@@ -159,6 +168,10 @@ function pushHotelOrder() {
   background-color: $white;
   padding: 20px 40px 78px 40px;
   border-radius: 10px;
+
+  @include bp($point_2) {
+    padding: 15px 10px;
+  }
 }
 
 .reserv_form {
@@ -170,17 +183,32 @@ function pushHotelOrder() {
   padding: 17px 135px;
   margin-bottom: 11px;
 
+  @include bp($point_2) {
+    flex-wrap: wrap;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
   :deep(.custom-select) {
     max-width: 260px;
+    @include bp($point_2) {
+      max-width: 100%;
+    }
     span {
       font-size: 16px;
     }
   }
   :deep(.input) {
     max-width: 220px;
+    @include bp($point_2) {
+      max-width: 100%;
+    }
   }
   :deep(.dp__input) {
     width: 160px;
+    @include bp($point_2) {
+      width: 100%;
+    }
   }
 }
 
@@ -191,12 +219,22 @@ function pushHotelOrder() {
   padding-bottom: 23px;
   border-bottom: 1px solid $l-gray;
   margin-bottom: 30px;
+  @include bp($point_2) {
+    padding-bottom: 16px;
+    margin-bottom: 20px;
+  }
   h3 {
     font-size: 32px;
+    @include bp($point_2) {
+      font-size: 20px;
+    }
   }
   p {
     color: $red;
     font-size: 20px;
+    @include bp($point_2) {
+      font-size: 16px;
+    }
   }
 }
 
@@ -233,5 +271,11 @@ function pushHotelOrder() {
 
 .reserve_btn {
   display: inline-flex;
+}
+
+.air-date {
+  @include bp($point_2) {
+    max-width: 48%;
+  }
 }
 </style>

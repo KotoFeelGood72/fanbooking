@@ -4,8 +4,16 @@
       <div class="filter_input dir_input">
         <div class="input_title">Поездка</div>
         <div class="filter_input__row">
-          <Selects label="откуда" :options="cities" v-model="filterData.directionFrom" />
-          <Selects label="куда" :options="cities" v-model="filterData.directionTo" />
+          <Selects
+            label="откуда"
+            :options="cities"
+            v-model="filterData.directionFrom"
+          />
+          <Selects
+            label="куда"
+            :options="cities"
+            v-model="filterData.directionTo"
+          />
           <div class="change_button" @click="changeDirections">
             <img src="../../../assets/sprite/svg/change.svg" alt="" />
           </div>
@@ -71,6 +79,11 @@ const changeDirections = () => {
   @include flex-start;
   align-items: flex-end;
   gap: 6px;
+
+  @include bp($point_2) {
+    flex-direction: column;
+    gap: 10px;
+  }
 }
 .filter_input__row {
   @include flex-start;
@@ -81,12 +94,22 @@ const changeDirections = () => {
   gap: 35px;
   width: 270px;
   position: relative;
+  @include bp($point_2) {
+    width: 100%;
+  }
 }
 .filter_input {
   // flex-grow: 1;
+  @include bp($point_2) {
+    width: 100%;
+  }
 }
 .filter_btn {
   flex-grow: 1;
+
+  @include bp($point_2) {
+    width: 100%;
+  }
 }
 
 .input_title {
@@ -108,6 +131,13 @@ const changeDirections = () => {
   z-index: 22;
   cursor: pointer;
   color: $blue;
+
+  @include bp($point_2) {
+    right: 5px;
+    transform: translateY(-50%) rotate(90deg);
+    margin: 0;
+    border: none;
+  }
   .icons {
     width: 15px;
     height: 15px;

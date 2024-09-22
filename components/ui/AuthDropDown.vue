@@ -1,7 +1,12 @@
 <template>
   <div class="auth_dropdown">
     <Buttons name="Войти" @click="openModal('login')" />
-    <Buttons name="Регистрация" sheme="primary" color="gray" @click="openModal('sign')" />
+    <Buttons
+      name="Регистрация"
+      sheme="primary"
+      color="gray"
+      @click="openModal('sign')"
+    />
   </div>
 </template>
 
@@ -23,5 +28,11 @@ const { openModal } = useModalStore();
   @include flex-start;
   flex-direction: column;
   gap: 6px;
+  @include bp($point_2) {
+    right: -80px;
+    min-width: auto;
+    padding: 10px;
+    font-size: 14px;
+  }
 }
 </style>

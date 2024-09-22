@@ -5,7 +5,12 @@
       <span :class="{ selected: selectedGender === 'male' }">М</span>
     </label>
     <label>
-      <input type="radio" name="gender" value="female" v-model="selectedGender" />
+      <input
+        type="radio"
+        name="gender"
+        value="female"
+        v-model="selectedGender"
+      />
       <span :class="{ selected: selectedGender === 'female' }">Ж</span>
     </label>
   </div>
@@ -24,6 +29,9 @@ const selectedGender = ref("male");
   width: max-content;
   position: relative;
   border-radius: 7px;
+  @include bp($point_2) {
+    width: 100%;
+  }
   &:before {
     position: absolute;
     top: 0;
@@ -38,6 +46,9 @@ const selectedGender = ref("male");
 
   label {
     margin: 0;
+    @include bp($point_2) {
+      flex-grow: 1;
+    }
     input {
       display: none;
     }
@@ -50,6 +61,10 @@ const selectedGender = ref("male");
       color: $m-gray;
       transition: all 0.3s;
       position: relative;
+
+      @include bp($point_2) {
+        width: 100%;
+      }
       &:before {
         // position: absolute;
         // top: 0;

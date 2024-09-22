@@ -4,7 +4,10 @@
       <div class="reserv_main">
         <div class="reserv_head">
           <h1>Получить проверяемое бронирование отеля</h1>
-          <p>Заполните сведения о поездке, и мы пришлём подтверждение бронирования</p>
+          <p>
+            Заполните сведения о поездке, и мы пришлём подтверждение
+            бронирования
+          </p>
         </div>
         <div class="reserv_content">
           <div class="reserv_form">
@@ -152,6 +155,9 @@ function pushHotelOrder() {
   margin-bottom: 36px;
   h1 {
     font-size: 32px;
+    @include bp($point_2) {
+      font-size: 20px;
+    }
   }
 }
 
@@ -193,6 +199,9 @@ function pushHotelOrder() {
   margin-bottom: 30px;
   h3 {
     font-size: 32px;
+    @include bp($point_2) {
+      font-size: 20px;
+    }
   }
   p {
     color: $red;

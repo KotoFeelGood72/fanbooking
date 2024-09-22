@@ -73,6 +73,10 @@ const breadcrumbs = computed(() => {
   list-style: none;
   padding: 0;
   display: flex;
+  @include bp($point_2) {
+    flex-wrap: wrap;
+    gap: 5px;
+  }
 }
 .breadcrumbs li {
   display: flex;
